@@ -79,6 +79,7 @@ default['jenkins']['http_proxy']['basic_auth_username'] = 'jenkins'
 default['jenkins']['http_proxy']['basic_auth_password'] = 'jenkins'
 default['jenkins']['http_proxy']['cas_validate_server'] = 'off'
 default['jenkins']['http_proxy']['server_auth_method'] = nil
+default['jenkins']['http_proxy']['allow_from'] = []
 
 default['jenkins']['http_proxy']['ssl']['enabled'] = false
 default['jenkins']['http_proxy']['ssl']['redirect_http'] = false
