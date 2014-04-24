@@ -64,6 +64,18 @@ directory ssh_dir do
   recursive true
 end
 
+template "#{home_dir}/config.xml" do
+  source "jdk_jenkins_config.erb"
+  variables({ :jdk_home => node['jenkins']['server']['jdk_home'] })
+  only_if { node['jenkins']['server']['jdk_home'] }
+end
+
+template "#{home_dir}/hudson.tasks.Maven.xml" do
+  source "maven_jenkins_config.erb"
+  variables({ :maven_home => node['jenkins']['server']['maven_home'] })
+  only_if { node['jenkins']['server']['maven_home'] }
+end
+
 include_recipe "jenkins::_server_#{node['jenkins']['server']['install_method']}"
 
 execute "ssh-keygen -f #{File.join(ssh_dir, "id_rsa")} -N ''" do
