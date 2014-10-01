@@ -58,7 +58,7 @@ template "#{node['apache']['dir']}/sites-available/jenkins" do
     :www_redirect     => www_redirect
   )
 
-  if File.exists?("#{node['apache']['dir']}/sites-enabled/jenkins")
+  if File.exists?("#{node['apache']['dir']}/sites-enabled/jenkins.conf")
     notifies  :restart, 'service[apache2]'
   end
 end
